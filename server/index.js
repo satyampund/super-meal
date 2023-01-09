@@ -262,6 +262,18 @@ app.get('/order', async (req, res) => {
   });
 });
 
+app.get('/ordersByUserId', async (req, res) => {
+  const { userId } = req.query;
+
+  const orders = await Order.findOne({ userId: userId });
+
+  res.json({
+    success: true,
+    message: 'Orders fetched successfully',
+    data: orders,
+  });
+});
+
 // API routes end here
 
 app.listen(PORT, () => {
