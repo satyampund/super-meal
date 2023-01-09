@@ -217,6 +217,16 @@ app.post('/unbookTable', async (req, res) => {
   });
 });
 
+app.get('/availableTables', async (req, res) => {
+  const availableTables = await Table.find({ occupied: false });
+
+  res.json({
+    success: true,
+    message: 'Available Tables fetched successfully',
+    data: availableTables,
+  });
+});
+
 // API routes end here
 
 app.listen(PORT, () => {
