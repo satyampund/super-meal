@@ -6,6 +6,7 @@ dotenv.config();
 import User from './models/User.js';
 import FoodItem from './models/FoodItem.js';
 import Table from './models/Table.js';
+import Order from './models/Order.js';
 
 const app = express();
 app.use(express.json());
@@ -224,6 +225,28 @@ app.get('/availableTables', async (req, res) => {
     success: true,
     message: 'Available Tables fetched successfully',
     data: availableTables,
+  });
+});
+
+app.post('/orderFoodItems', async (req, res) => {
+  const { userId, tableNumber, items } = req.body;
+
+  const totalOrders = await Order.countDocuments();
+  const orderId = totalOrders + 1;
+
+  const order = new Order({
+    orderId: orderId,
+    userId: userId,
+    tableNumber: tableNumber,
+    items: items,
+  });
+
+  const saveOrder = await order.save();
+
+  res.json({
+    success: true,
+    message: 'Order placed successfully',
+    data: saveOrder,
   });
 });
 
