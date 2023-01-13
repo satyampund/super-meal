@@ -1,14 +1,11 @@
-.form-container {
+.signup-form-container {
   font-family: 'Poppins', sans-serif !important;
   padding: 20px 40px !important;
-  width: 72%;
+  width: 130%;
   background-color: white;
   border-radius: 10px;
   border: 1px solid black;
   box-shadow: 0 14px 20px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .contact__form-label {
@@ -35,10 +32,6 @@
   outline: none;
 }
 
-.signup-img {
-  width: 75%;
-}
-
 .css-button-rounded--sky {
   min-width: 130px;
   height: 40px;
@@ -61,4 +54,24 @@
 .css-button-rounded--sky:hover {
   background: #fff;
   color: #fb8500;
+}
+
+.mymodal {
+  position: fixed;
+  top: 50%;
+  left: 42%;
+  transform: translate(-50%, -50%);
+  /* overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px; */
+}
+
+.myoverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
 }

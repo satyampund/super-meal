@@ -36,6 +36,7 @@ app.post('/signup', async (req, res) => {
       success: false,
       message: `${emptyFields.join(', ')} are required`,
     });
+    return;
   }
   // validations to check if all fields are filled end
 
