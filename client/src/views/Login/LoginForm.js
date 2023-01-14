@@ -4,17 +4,14 @@ import swal from 'sweetalert';
 import Modal from 'react-modal';
 import { currentUser } from '../../util/currentUser.js';
 
-import './SignupForm.css';
+import './LoginForm.css';
 
 Modal.setAppElement('#root');
 
-const SignupForm = () => {
+const LoginForm = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('user');
 
   function toggleModal() {
     if (!currentUser) {
@@ -22,13 +19,10 @@ const SignupForm = () => {
     }
   }
 
-  async function signupUser() {
-    const response = await axios.post('/signup', {
-      name: name,
+  async function loginUser() {
+    const response = await axios.post('/login', {
       email: email,
-      phone: phone,
       password: password,
-      role: role,
     });
 
     console.log(response.data);
@@ -40,6 +34,7 @@ const SignupForm = () => {
         icon: 'success',
         button: 'OK',
       });
+      localStorage.setItem('currentUser', JSON.stringify(response.data.data));
       window.location.href = '/';
     } else {
       swal({
@@ -48,16 +43,15 @@ const SignupForm = () => {
         icon: 'error',
         button: 'OK',
       });
-      setName('');
+      localStorage.removeItem('currentUser');
       setEmail('');
-      setPhone('');
       setPassword('');
     }
   }
 
   return (
     <>
-      <button onClick={toggleModal}>Sign up</button>
+      <button onClick={toggleModal}>Login</button>
       <Modal
         isOpen={isOpen}
         onRequestClose={toggleModal}
@@ -65,65 +59,38 @@ const SignupForm = () => {
         className="mymodal"
         overlayClassName="myoverlay"
         closeTimeoutMS={500}>
-        <form className="form-elements signup-form-container">
+        <form className="form-elements login-form-container">
           <div className="element-holder">
-            <label className="signup__form-label" htmlFor="name">
-              Name
-            </label>
-            <input
-              required
-              placeholder="Enter Your Name"
-              type="text"
-              className="signup__form-input"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="element-holder">
-            <label className="signup__form-label" htmlFor="email">
+            <label className="login__form-label" htmlFor="email">
               Email
             </label>
             <input
               required
               placeholder="Enter Your Email"
               type="email"
-              className="signup__form-input"
+              className="login__form-input"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
+
           <div className="element-holder">
-            <label className="signup__form-label" htmlFor="phone">
-              Phone
-            </label>
-            <input
-              required
-              placeholder="Enter Your Phone"
-              type="text"
-              className="signup__form-input"
-              id="phone"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
-          </div>
-          <div className="element-holder">
-            <label className="signup__form-label" htmlFor="password">
+            <label className="login__form-label" htmlFor="password">
               Password
             </label>
             <input
               required
               placeholder="Enter Your Password"
               type="password"
-              className="signup__form-input"
+              className="login__form-input"
               id="passwrod"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="button" className="css-button-rounded--sky" onClick={signupUser}>
-            Sign Up
+          <button type="button" className="css-button-rounded--sky" onClick={loginUser}>
+            Login
           </button>
         </form>
       </Modal>
@@ -131,4 +98,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default LoginForm;
