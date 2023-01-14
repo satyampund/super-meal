@@ -122,6 +122,16 @@ app.post('/foodItem', async (req, res) => {
   });
 });
 
+app.get('/allFoodItems', async (req, res) => {
+  const foodItems = await FoodItem.find();
+
+  res.json({
+    success: true,
+    message: 'Food Items fetched successfully',
+    data: foodItems,
+  });
+});
+
 // http://localhost:5000/foodItemsByCategory?category=Burger
 app.get('/foodItemsByCategory', async (req, res) => {
   const { category } = req.query;
