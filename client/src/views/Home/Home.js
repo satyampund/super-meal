@@ -4,6 +4,7 @@ import './Home.css';
 import SignupForm from '../Signup/SignupForm';
 import LoginForm from '../Login/LoginForm';
 import { currentUser } from '../../util/currentUser.js';
+import FoodItemCard from '../../components/FoodItemCard/FoodItemCard';
 
 const Home = () => {
   const [searchText, setSearchText] = useState('');
@@ -57,15 +58,22 @@ const Home = () => {
         />
       </div>
 
-      <div className="food-items-result">
-        {currentFoodItems?.map((fooditem) => {
-          return (
-            <>
-              <h3>{fooditem.title}</h3>
-              <hr></hr>
-            </>
-          );
-        })}
+      <div className="food-items-result  text-center">
+        <div className="container-fluid">
+          <div className="row">
+            {currentFoodItems?.map((fooditem, index) => {
+              return (
+                <FoodItemCard
+                  key={index}
+                  title={fooditem.title}
+                  price={fooditem.price}
+                  category={fooditem.category}
+                  imgUrl={fooditem.imgUrl}
+                />
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );
