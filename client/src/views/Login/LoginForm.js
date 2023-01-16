@@ -58,9 +58,12 @@ const LoginForm = () => {
         contentLabel="My dialog"
         className="mymodal"
         overlayClassName="myoverlay"
-        closeTimeoutMS={500}>
+        closeTimeoutMS={200}>
         <form className="form-elements login-form-container">
           <div className="element-holder">
+            <span onClick={toggleModal} className="loginModal-closeBtn">
+              &times;
+            </span>
             <label className="login__form-label" htmlFor="email">
               Email
             </label>

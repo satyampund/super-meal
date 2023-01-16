@@ -6,6 +6,7 @@
   border-radius: 10px;
   border: 1px solid black;
   box-shadow: 0 14px 20px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
 }
 
 .login__form-label {
@@ -74,4 +75,13 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.75);
+}
+
+.loginModal-closeBtn {
+  position: absolute;
+  top: 0px;
+  right: 15px;
+  font-size: 30px;
+  font-weight: 400;
+  cursor: pointer;
 }

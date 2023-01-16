@@ -67,6 +67,9 @@ const SignupForm = () => {
         closeTimeoutMS={500}>
         <form className="form-elements signup-form-container">
           <div className="element-holder">
+            <span onClick={toggleModal} className="signupModal-closeBtn">
+              &times;
+            </span>
             <label className="signup__form-label" htmlFor="name">
               Name
             </label>
