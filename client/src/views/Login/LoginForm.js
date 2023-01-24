@@ -2,22 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import swal from 'sweetalert';
 import Modal from 'react-modal';
-import { currentUser } from '../../util/currentUser.js';
 
 import './LoginForm.css';
 
 Modal.setAppElement('#root');
 
-const LoginForm = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const LoginForm = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  function toggleModal() {
-    if (!currentUser) {
-      setIsOpen(!isOpen);
-    }
-  }
 
   async function loginUser() {
     const response = await axios.post('/login', {
@@ -35,7 +27,7 @@ const LoginForm = () => {
         button: 'OK',
       });
       localStorage.setItem('currentUser', JSON.stringify(response.data.data));
-      window.location.href = '/';
+      window.location.href = '/dashboard';
     } else {
       swal({
         title: 'Error',
@@ -51,17 +43,16 @@ const LoginForm = () => {
 
   return (
     <>
-      <button onClick={toggleModal}>Login</button>
       <Modal
-        isOpen={isOpen}
-        onRequestClose={toggleModal}
+        isOpen={props.isLoginOpen}
+        onRequestClose={props.toggleModalLogin}
         contentLabel="My dialog"
         className="mymodal"
         overlayClassName="myoverlay"
         closeTimeoutMS={200}>
         <form className="form-elements login-form-container">
           <div className="element-holder">
-            <span onClick={toggleModal} className="loginModal-closeBtn">
+            <span onClick={props.toggleModalLogin} className="loginModal-closeBtn">
               &times;
             </span>
             <label className="login__form-label" htmlFor="email">

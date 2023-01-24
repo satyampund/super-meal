@@ -2,25 +2,17 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import swal from 'sweetalert';
 import Modal from 'react-modal';
-import { currentUser } from '../../util/currentUser.js';
 
 import './SignupForm.css';
 
 Modal.setAppElement('#root');
 
-const SignupForm = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const SignupForm = (props) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('user');
-
-  function toggleModal() {
-    if (!currentUser) {
-      setIsOpen(!isOpen);
-    }
-  }
 
   async function signupUser() {
     const response = await axios.post('/signup', {
@@ -57,17 +49,16 @@ const SignupForm = () => {
 
   return (
     <>
-      <button onClick={toggleModal}>Sign up</button>
       <Modal
-        isOpen={isOpen}
-        onRequestClose={toggleModal}
+        isOpen={props.isSignupOpen}
+        onRequestClose={props.toggleModalSignup}
         contentLabel="My dialog"
         className="mymodal"
         overlayClassName="myoverlay"
         closeTimeoutMS={500}>
         <form className="form-elements signup-form-container">
           <div className="element-holder">
-            <span onClick={toggleModal} className="signupModal-closeBtn">
+            <span onClick={props.toggleModalSignup} className="signupModal-closeBtn">
               &times;
             </span>
             <label className="signup__form-label" htmlFor="name">

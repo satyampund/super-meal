@@ -1,0 +1,42 @@
+.nav-item {
+  margin: 0px 20px;
+}
+
+.brand-name {
+  text-transform: uppercase;
+  font-weight: bold;
+  word-spacing: 2px;
+  letter-spacing: 1px;
+  color: white;
+  font-size: 22px;
+}
+
+.nav-btns {
+  min-width: 100px;
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  background: rgb(239, 79, 95);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.nav-btns:hover {
+  background: none;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.navbar-custom {
+  background: rgb(239, 79, 95);
+}

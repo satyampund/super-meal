@@ -13,9 +13,21 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(process.env.MONGODB_URL, () => {
-  console.log('Connected to MongoDB Database');
-});
+// mongoose.connect(process.env.MONGODB_URL, () => {
+//   console.log('Connected to MongoDB Database');
+// });
+
+mongoose.set('strictQuery', false);
+
+mongoose
+  .connect(process.env.MONGO, {
+    useNewUrlParser: true,
+    // useCreateIndex: true,
+    // useFindAndModify: false,
+  })
+  .then(() => {
+    console.log('connected to the database');
+  });
 
 // API routes starts here
 
