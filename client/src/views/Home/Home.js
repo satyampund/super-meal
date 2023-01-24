@@ -4,6 +4,7 @@ import SignupForm from '../Signup/SignupForm';
 import LoginForm from '../Login/LoginForm';
 import { currentUser } from '../../util/currentUser.js';
 import NavBar from '../../components/NavBar/NavBar';
+import SuperMeal from './../../assests/super-meal-1.png';
 
 const Home = () => {
   const [isSignupOpen, setIsSignupOpen] = useState(false);
@@ -30,13 +31,22 @@ const Home = () => {
   return (
     <div>
       <div className="home-page">
-        <NavBar onClickLoginbtn={toggleModalLogin} onClickSignupbtn={toggleModalSignup} />
-        <h3>{currentUser?.name}</h3>
-        <button type="button" className="btn btn-danger" onClick={logOut}>
-          Logout
-        </button>
+        <NavBar
+          onClickLoginbtn={toggleModalLogin}
+          onClickSignupbtn={toggleModalSignup}
+          onClickLogout={logOut}
+        />
         <SignupForm toggleModalSignup={toggleModalSignup} isSignupOpen={isSignupOpen} />
         <LoginForm toggleModalLogin={toggleModalLogin} isLoginOpen={isLoginOpen} />
+
+        <div class="container text-center">
+          <div class="row">
+            <div class="col">Column</div>
+            <div class="col">
+              <img src={SuperMeal} className="supermeal-img"></img>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

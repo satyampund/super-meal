@@ -27,7 +27,7 @@ const LoginForm = (props) => {
         button: 'OK',
       });
       localStorage.setItem('currentUser', JSON.stringify(response.data.data));
-      window.location.href = '/dashboard';
+      window.location.href = '/';
     } else {
       swal({
         title: 'Error',
