@@ -1,4 +1,27 @@
 .table {
-  width: 50%;
+  width: 70%;
   cursor: pointer;
+}
+
+/* .table-container {
+  background-color: blue;
+} */
+
+.tableNumber {
+  font-family: 'Poppins', sans-serif;
+}
+.tableCard {
+  border: 1px solid black;
+  padding: 20px;
+  margin: 30px 47px;
+  border-radius: 15px;
+  box-shadow: 0 14px 20px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+@media screen and (max-width: 500px) {
+  .tableCard {
+    margin: 0px;
+    border-radius: 0;
+    box-shadow: none;
+  }
 }
