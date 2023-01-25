@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 5000;
 mongoose.set('strictQuery', false);
 
 mongoose
-  .connect(process.env.MONGO, {
+  .connect(process.env.MONGO_NEW, {
     useNewUrlParser: true,
     // useCreateIndex: true,
     // useFindAndModify: false,
