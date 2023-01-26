@@ -39,11 +39,25 @@ const Home = () => {
         <SignupForm toggleModalSignup={toggleModalSignup} isSignupOpen={isSignupOpen} />
         <LoginForm toggleModalLogin={toggleModalLogin} isLoginOpen={isLoginOpen} />
 
-        <div class="container text-center">
+        {/* <div class="container text-center">
           <div class="row">
-            <div class="col">Column</div>
-            <div class="col">
-              <img src={SuperMeal} className="supermeal-img"></img>
+            <div class="col-md-6 parent-container">
+              <div className="child-container">
+                <h1 className="heading">Super Meal to make you feel good </h1>
+                <button className="btn btn-danger">Book Table</button>
+                <button className="btn btn-danger">Explore Food</button>
+              </div>
+            </div>
+            <div class="col-md-6">hh</div>
+          </div>
+        </div> */}
+
+        <div>
+          <div class="col-md-6 parent-container">
+            <div className="child-container">
+              <h1 className="heading">Super Meal to make you feel good </h1>
+              <button className="css-button-arrow--red mx-3 mt-2">Explore Food</button>
+              <button className="css-button-sliding-to-left--red mx-3 mt-2">Book Table</button>
             </div>
           </div>
         </div>
