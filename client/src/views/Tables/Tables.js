@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Tables.css';
 import axios from 'axios';
 import swal from 'sweetalert';
 import AvailableTable from './../../assests/table.png';
+import { loginRequired } from '../../util/loginRequired';
 
 const Tables = () => {
   const [availabeTable, setAvailabeTable] = useState([]);
+
+  useEffect(() => {
+    loginRequired();
+  }, []);
 
   async function fetchAvailabeTalbles() {
     console.log('fetching all tables');
@@ -17,6 +22,7 @@ const Tables = () => {
   async function bookThisTable(e) {
     console.log('Booking Table');
     const data = e.target.id;
+    console.log(data);
     const tempArr = data.split(',');
     console.log(tempArr);
 

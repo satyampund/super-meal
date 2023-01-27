@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './Dashboard.css';
 import axios from 'axios';
 import FoodItemCard from '../../components/FoodItemCard/FoodItemCard';
+import { loginRequired } from '../../util/loginRequired';
+import Cart from '../../components/Cart/Cart';
 
 const Dashboard = () => {
   const [searchText, setSearchText] = useState('');
@@ -22,6 +24,10 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
+    loginRequired();
+  }, []);
+
+  useEffect(() => {
     if (searchText.length > 0) {
       fetchSpecificItems();
     } else {
@@ -30,35 +36,38 @@ const Dashboard = () => {
   }, [searchText]);
 
   return (
-    <div>
-      <div className="search-container">
-        <input
-          type="text"
-          placeholder="Search for dish"
-          className="input-search"
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-        />
-      </div>
+    <>
+      <Cart />
+      <div>
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Search for dish"
+            className="input-search"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+        </div>
 
-      <div className="food-items-result  text-center">
-        <div className="container-fluid">
-          <div className="row">
-            {currentFoodItems?.map((fooditem, index) => {
-              return (
-                <FoodItemCard
-                  key={index}
-                  title={fooditem.title}
-                  price={fooditem.price}
-                  category={fooditem.category}
-                  imgUrl={fooditem.imgUrl}
-                />
-              );
-            })}
+        <div className="food-items-result  text-center">
+          <div className="container-fluid">
+            <div className="row">
+              {currentFoodItems?.map((fooditem, index) => {
+                return (
+                  <FoodItemCard
+                    key={index}
+                    title={fooditem.title}
+                    price={fooditem.price}
+                    category={fooditem.category}
+                    imgUrl={fooditem.imgUrl}
+                  />
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

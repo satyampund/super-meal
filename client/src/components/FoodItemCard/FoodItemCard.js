@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './FoodItemCard.css';
+import swal from 'sweetalert';
 import WalletImg from './../../assests/wallet.png';
 import DishImg from './../../assests/quality.png';
 import PlusImg from './../../assests/plus.png';
@@ -8,7 +9,7 @@ import MinusImg from './../../assests/minus.png';
 const FoodItemCard = (props) => {
   const [quantity, setQuantity] = useState(1);
 
-  function addToList() {
+  async function addToList() {
     const listObj = {
       name: props.title,
       price: props.price,
@@ -20,6 +21,15 @@ const FoodItemCard = (props) => {
     existingList.push(listObj);
 
     localStorage.setItem('list', JSON.stringify(existingList));
+
+    await swal({
+      title: 'Success',
+      text: 'Item added to Cart',
+      icon: 'success',
+      button: 'OK',
+    });
+
+    window.location.reload();
   }
 
   return (
