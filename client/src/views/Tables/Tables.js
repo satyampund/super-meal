@@ -10,6 +10,7 @@ const Tables = () => {
 
   useEffect(() => {
     loginRequired();
+    fetchAvailabeTalbles();
   }, []);
 
   async function fetchAvailabeTalbles() {
@@ -22,9 +23,8 @@ const Tables = () => {
   async function bookThisTable(e) {
     console.log('Booking Table');
     const data = e.target.id;
-    console.log(data);
     const tempArr = data.split(',');
-    console.log(tempArr);
+    // console.log(tempArr);
 
     const response = await axios.post('/bookTable', {
       tableNumber: Number(tempArr[0]),
@@ -47,9 +47,9 @@ const Tables = () => {
 
   return (
     <>
-      <button onClick={fetchAvailabeTalbles} className="btn btn-danger mx-3">
+      {/* <button onClick={fetchAvailabeTalbles} className="btn btn-danger mx-3">
         Avalilabe Tables
-      </button>
+      </button> */}
 
       <div className="container table-container">
         <div className="row text-center">

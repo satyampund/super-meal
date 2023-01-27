@@ -3,7 +3,7 @@ import './Dashboard.css';
 import axios from 'axios';
 import FoodItemCard from '../../components/FoodItemCard/FoodItemCard';
 import { loginRequired } from '../../util/loginRequired';
-import Cart from '../../components/Cart/Cart';
+import CartNavBar from '../../components/Cart/CartNavBar';
 
 const Dashboard = () => {
   const [searchText, setSearchText] = useState('');
@@ -37,7 +37,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <Cart />
+      <CartNavBar />
       <div>
         <div className="search-container">
           <input

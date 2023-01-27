@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Home.css';
 import SignupForm from '../Signup/SignupForm';
 import LoginForm from '../Login/LoginForm';
@@ -28,6 +29,7 @@ const Home = () => {
       window.location.href = '/';
     }
   };
+
   return (
     <div>
       <div className="home-page">
@@ -56,8 +58,12 @@ const Home = () => {
           <div class="col-md-6 parent-container">
             <div className="child-container">
               <h1 className="heading">Super Meal to make you feel good </h1>
-              <button className="css-button-arrow--red mx-3 mt-2">Explore Food</button>
-              <button className="css-button-sliding-to-left--red mx-3 mt-2">Book Table</button>
+              <Link to="/dashboard">
+                <button className="css-button-arrow--red mx-3 mt-2">Explore Food</button>
+              </Link>
+              <Link to="/tables">
+                <button className="css-button-sliding-to-left--red mx-3 mt-2">Book Table</button>
+              </Link>
             </div>
           </div>
         </div>
