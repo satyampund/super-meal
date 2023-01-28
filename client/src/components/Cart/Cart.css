@@ -1,7 +1,8 @@
 .cart-container {
+  font-family: 'Poppins', sans-serif !important;
   background-color: white;
   padding: 30px 60px;
-  height: 400px;
+  max-height: 400px;
   overflow: scroll;
   border-radius: 15px;
 }

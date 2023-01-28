@@ -29,14 +29,17 @@ const Cart = () => {
           {myFoodListItems.map((item, index) => {
             return (
               <div>
-                <h6>Name: {item.name}</h6>
-                <h6>Quantity: {item.quantity}</h6>
-                <h6>Price: {item.price}</h6>
+                <h6>Name : {item.name}</h6>
+                <h6>Quantity : {item.quantity}</h6>
+                <h6>Price : ₹{item.price}</h6>
                 <hr></hr>
               </div>
             );
           })}
-          <button className="btn btn-danger">Order</button>
+          <button className="btn btn-danger mx-4" onClick={toggleModal}>
+            Cancel
+          </button>
+          <button className="btn btn-danger mx-4">Order Now</button>
         </div>
       </Modal>
     </div>
