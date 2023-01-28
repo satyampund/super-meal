@@ -41,19 +41,6 @@ const Home = () => {
         <SignupForm toggleModalSignup={toggleModalSignup} isSignupOpen={isSignupOpen} />
         <LoginForm toggleModalLogin={toggleModalLogin} isLoginOpen={isLoginOpen} />
 
-        {/* <div class="container text-center">
-          <div class="row">
-            <div class="col-md-6 parent-container">
-              <div className="child-container">
-                <h1 className="heading">Super Meal to make you feel good </h1>
-                <button className="btn btn-danger">Book Table</button>
-                <button className="btn btn-danger">Explore Food</button>
-              </div>
-            </div>
-            <div class="col-md-6">hh</div>
-          </div>
-        </div> */}
-
         <div>
           <div class="col-md-6 parent-container">
             <div className="child-container">

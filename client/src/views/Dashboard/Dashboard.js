@@ -4,10 +4,22 @@ import axios from 'axios';
 import FoodItemCard from '../../components/FoodItemCard/FoodItemCard';
 import { loginRequired } from '../../util/loginRequired';
 import CartNavBar from '../../components/Cart/CartNavBar';
+import Cart from '../../components/Cart/Cart';
+
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
 
 const Dashboard = () => {
   const [searchText, setSearchText] = useState('');
   const [currentFoodItems, setcurrentFoodItems] = useState([]);
+
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  function toggleModalCart() {
+    setIsCartOpen(!isCartOpen);
+    console.log('Button Clicked');
+  }
 
   async function fetchAllItems() {
     console.log('fetching all items');
@@ -37,7 +49,8 @@ const Dashboard = () => {
 
   return (
     <>
-      <CartNavBar />
+      <CartNavBar onClickCart={toggleModalCart} />
+      <Cart onClickCart={toggleModalCart} isCartOpen={isCartOpen} />
       <div>
         <div className="search-container">
           <input

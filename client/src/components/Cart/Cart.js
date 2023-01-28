@@ -1,30 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { myFoodListItems } from './../../util/myList';
 import './Cart.css';
 
 import Modal from 'react-modal';
-
 Modal.setAppElement('#root');
 
-const Cart = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  function toggleModal() {
-    setIsOpen(!isOpen);
-  }
+const Cart = (props) => {
   return (
     <div>
-      <h1>Cart</h1>
-
-      <button onClick={toggleModal}>Open modal</button>
-
       <Modal
-        isOpen={isOpen}
-        onRequestClose={toggleModal}
+        isOpen={props.isCartOpen}
+        onRequestClose={props.onClickCart}
         contentLabel="My dialog"
         className="myCartmodal"
         overlayClassName="myCartoverlay"
-        closeTimeoutMS={500}>
+        closeTimeoutMS={200}>
         <div className="cart-container">
           {myFoodListItems.map((item, index) => {
             return (
@@ -36,7 +26,7 @@ const Cart = () => {
               </div>
             );
           })}
-          <button className="btn btn-danger mx-4" onClick={toggleModal}>
+          <button className="btn btn-danger mx-4" onClick={props.onClickCart}>
             Cancel
           </button>
           <button className="btn btn-danger mx-4">Order Now</button>

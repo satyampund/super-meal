@@ -6,7 +6,7 @@ import { myFoodListCount } from '../../util/myList';
 const CartButton = (props) => {
   return (
     <>
-      <button className="button" onClick={props.onClick}>
+      <button className="button" onClick={props.onClickCart}>
         <span className="icon">
           <CartIcon />
         </span>
