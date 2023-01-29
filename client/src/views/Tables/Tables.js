@@ -4,6 +4,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 import AvailableTable from './../../assests/table.png';
 import { loginRequired } from '../../util/loginRequired';
+import { currentUser } from '../../util/currentUser';
 
 const Tables = () => {
   const [availabeTable, setAvailabeTable] = useState([]);
@@ -21,19 +22,13 @@ const Tables = () => {
   }
 
   async function bookThisTable(e) {
-    console.log('Booking Table');
-    const data = e.target.id;
-    const tempArr = data.split(',');
-    // console.log(tempArr);
-
     const response = await axios.post('/bookTable', {
-      tableNumber: Number(tempArr[0]),
-      userId: tempArr[1],
+      tableNumber: e.target.value,
+      userId: currentUser._id,
     });
 
-    console.log(tempArr[0]);
-
     console.log(response.data.data);
+    localStorage.setItem('bookedTable', JSON.stringify(response.data.data));
     if (response.data.data.occupied) {
       await swal({
         title: 'Success',
@@ -47,10 +42,6 @@ const Tables = () => {
 
   return (
     <>
-      {/* <button onClick={fetchAvailabeTalbles} className="btn btn-danger mx-3">
-        Avalilabe Tables
-      </button> */}
-
       <div className="container table-container">
         <div className="row text-center">
           {availabeTable?.map((table, index) => {
@@ -61,7 +52,7 @@ const Tables = () => {
                 <br></br>
                 <button
                   className="btn btn-danger"
-                  id={[table.tableNumber, table._id]}
+                  value={table.tableNumber}
                   onClick={bookThisTable}>
                   Book Table
                 </button>

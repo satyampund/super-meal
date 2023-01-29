@@ -1,11 +1,35 @@
 import React from 'react';
 import { myFoodListItems } from './../../util/myList';
 import './Cart.css';
+import axios from 'axios';
+import swal from 'sweetalert';
+import { currentUser } from '../../util/currentUser';
+import { myBookedTable } from '../../util/bookedTable';
 
 import Modal from 'react-modal';
 Modal.setAppElement('#root');
 
 const Cart = (props) => {
+  async function placeOrder() {
+    const response = await axios.post('/orderFoodItems', {
+      userId: currentUser._id,
+      tableNumber: myBookedTable.tableNumber,
+      items: myFoodListItems,
+    });
+
+    console.log(response.data.data);
+    if (response.data.success) {
+      await swal({
+        title: 'Success',
+        text: response.data.message,
+        icon: 'success',
+        button: 'OK',
+      });
+      localStorage.removeItem('list');
+      window.location.reload();
+    }
+  }
+
   return (
     <div>
       <Modal
@@ -29,7 +53,9 @@ const Cart = (props) => {
           <button className="btn btn-danger mx-4" onClick={props.onClickCart}>
             Cancel
           </button>
-          <button className="btn btn-danger mx-4">Order Now</button>
+          <button className="btn btn-danger mx-4" onClick={placeOrder}>
+            Order Now
+          </button>
         </div>
       </Modal>
     </div>

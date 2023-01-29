@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import CartButton from './CartButton';
 import './CartNavBar.css';
+import { myFoodListCount } from '../../util/myList';
 
 const CartNavBar = (props) => {
   return (
@@ -11,7 +12,7 @@ const CartNavBar = (props) => {
           <h1 className="mt-3 brand-heading">Super Meal</h1>
         </Link>
 
-        <CartButton onClickCart={props.onClickCart} />
+        {myFoodListCount > 0 && <CartButton onClickCart={props.onClickCart} />}
       </header>
     </div>
   );
