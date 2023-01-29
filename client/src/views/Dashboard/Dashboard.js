@@ -3,6 +3,7 @@ import './Dashboard.css';
 import axios from 'axios';
 import FoodItemCard from '../../components/FoodItemCard/FoodItemCard';
 import { loginRequired } from '../../util/loginRequired';
+import { tableBookingRequired } from '../../util/tableBookingRequried';
 import CartNavBar from '../../components/Cart/CartNavBar';
 import Cart from '../../components/Cart/Cart';
 
@@ -37,6 +38,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     loginRequired();
+    tableBookingRequired();
   }, []);
 
   useEffect(() => {
