@@ -50,6 +50,11 @@ const Cart = (props) => {
               </div>
             );
           })}
+
+          <h5 className="my-4 text-center">
+            Total Bill : ₹{myFoodListItems.reduce((acc, item) => acc + item.total, 0)}
+          </h5>
+
           <button className="btn btn-danger mx-4" onClick={props.onClickCart}>
             Cancel
           </button>

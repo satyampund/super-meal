@@ -14,6 +14,7 @@ const FoodItemCard = (props) => {
       name: props.title,
       price: props.price,
       quantity: quantity,
+      total: props.price * quantity,
     };
 
     //Add list to local storage
@@ -28,7 +29,6 @@ const FoodItemCard = (props) => {
       icon: 'success',
       button: 'OK',
     });
-
     window.location.reload();
   }
 
