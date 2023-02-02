@@ -27,9 +27,10 @@ const Tables = () => {
       userId: currentUser._id,
     });
 
-    console.log(response.data.data);
-    localStorage.setItem('bookedTable', JSON.stringify(response.data.data));
-    if (response.data.data.occupied) {
+    console.log(e.target.value);
+    console.log(currentUser);
+
+    if (response.data.success) {
       await swal({
         title: 'Success',
         text: 'Table Booked Successfully',
@@ -37,6 +38,14 @@ const Tables = () => {
         button: 'OK',
       });
       window.location.href = '/dashboard';
+      localStorage.setItem('bookedTable', JSON.stringify(response.data.data));
+    } else {
+      await swal({
+        title: 'Error',
+        text: 'Table Already Booked',
+        icon: 'error',
+        button: 'OK',
+      });
     }
   }
 
@@ -46,7 +55,7 @@ const Tables = () => {
         <div className="row text-center">
           {availabeTable?.map((table, index) => {
             return (
-              <div key={index} className="col-md-3 tableCard">
+              <div key={index} className={`col-md-3 tableCard ${table.occupied && 'bg-red'}`}>
                 <p className="tableNumber">Table Number - {table.tableNumber}</p>
                 <img src={AvailableTable} className="table" alt="random" />
                 <br></br>

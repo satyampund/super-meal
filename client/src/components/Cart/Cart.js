@@ -30,6 +30,12 @@ const Cart = (props) => {
     }
   }
 
+  const removeItem = (index) => {
+    myFoodListItems.splice(index, 1);
+    localStorage.setItem('list', JSON.stringify(myFoodListItems));
+    window.location.reload();
+  };
+
   return (
     <div>
       <Modal
@@ -46,6 +52,13 @@ const Cart = (props) => {
                 <h6>Name : {item.name}</h6>
                 <h6>Quantity : {item.quantity}</h6>
                 <h6>Price : ₹{item.price}</h6>
+                <button
+                  className="remove-button"
+                  onClick={() => {
+                    removeItem(index);
+                  }}>
+                  Remove
+                </button>
                 <hr></hr>
               </div>
             );
@@ -55,10 +68,10 @@ const Cart = (props) => {
             Total Bill : ₹{myFoodListItems.reduce((acc, item) => acc + item.total, 0)}
           </h5>
 
-          <button className="btn btn-danger mx-4" onClick={props.onClickCart}>
+          <button className="cancel-btn mx-4" onClick={props.onClickCart}>
             Cancel
           </button>
-          <button className="btn btn-danger mx-4" onClick={placeOrder}>
+          <button className="order-btn mx-4" onClick={placeOrder}>
             Order Now
           </button>
         </div>

@@ -27,6 +27,30 @@
   background-color: rgba(0, 0, 0, 0.75);
 }
 
+.remove-button {
+  background-color: rgb(239, 79, 95);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 3px 7px;
+  font-size: 14px;
+}
+
+.order-btn,
+.cancel-btn {
+  background-color: rgb(239, 79, 95);
+  color: #fff;
+  border: none;
+  padding: 7px 10px;
+  border-radius: 7px;
+}
+
+.order-btn:hover,
+.cancel-btn:hover {
+  background-color: rgb(237, 48, 67);
+  color: #fff;
+}
+
 @media screen and (max-width: 500px) {
   .cart-container {
     min-width: 300px;
