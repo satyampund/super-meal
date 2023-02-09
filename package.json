@@ -1,0 +1,28 @@
+{
+  "name": "super-meal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"cd client && npm start\" \"cd server && npm start\"",
+    "build": "cd client && npm run build",
+    "client": "cd client && npm start",
+    "server": "cd server && npm start",
+    "start": "npm run build && npm run server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/satyampund/super-meal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/satyampund/super-meal/issues"
+  },
+  "homepage": "https://github.com/satyampund/super-meal#readme",
+  "dependencies": {
+    "concurrently": "^7.6.0",
+    "path": "^0.12.7"
+  }
+}

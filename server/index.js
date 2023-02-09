@@ -1,7 +1,9 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import path from 'path';
 import dotenv from 'dotenv';
 dotenv.config();
+const __dirname = path.resolve();
 
 import User from './models/User.js';
 import FoodItem from './models/FoodItem.js';
@@ -296,6 +298,14 @@ app.get('/ordersByUserId', async (req, res) => {
     data: orders,
   });
 });
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
+  });
+}
 
 // API routes end here
 
