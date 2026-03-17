@@ -1,0 +1,9 @@
+services:
+  app:
+    image: satyamdocker26/super-meal-backend # Replace with your actual image name
+    container_name: super-meal-backend-container
+    ports:
+      - "5000:5000" # "3000:5000" -> Map port 5000 in the container to port 3000 on the host
+    env_file:
+      - .env
+    restart: unless-stopped
