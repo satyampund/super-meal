@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Dashboard.css';
-import axios from 'axios';
+import api from '../../util/api';
 import FoodItemCard from '../../components/FoodItemCard/FoodItemCard';
 import { loginRequired } from '../../util/loginRequired';
 import { tableBookingRequired } from '../../util/tableBookingRequried';
@@ -24,14 +24,14 @@ const Dashboard = () => {
 
   async function fetchAllItems() {
     console.log('fetching all items');
-    const response = await axios.get('/allFoodItems');
+    const response = await api.get('/allFoodItems');
     console.log(response.data.data);
     setcurrentFoodItems(response.data.data);
   }
 
   async function fetchSpecificItems() {
     console.log('fetching specific items');
-    const response = await axios.get(`/foodItems?title=${searchText}`);
+    const response = await api.get(`/foodItems?title=${searchText}`);
     console.log(response.data.data);
     setcurrentFoodItems(response.data.data);
   }

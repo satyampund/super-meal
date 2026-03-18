@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../../util/api';
 import swal from 'sweetalert';
 import Modal from 'react-modal';
 
@@ -15,7 +15,7 @@ const SignupForm = (props) => {
   const [role, setRole] = useState('user');
 
   async function signupUser() {
-    const response = await axios.post('/signup', {
+    const response = await api.post('/signup', {
       name: name,
       email: email,
       phone: phone,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { myFoodListItems } from './../../util/myList';
 import './Cart.css';
-import axios from 'axios';
+import api from '../../util/api';
 import swal from 'sweetalert';
 import { currentUser } from '../../util/currentUser';
 import { myBookedTable } from '../../util/bookedTable';
@@ -11,7 +11,7 @@ Modal.setAppElement('#root');
 
 const Cart = (props) => {
   async function placeOrder() {
-    const response = await axios.post('/orderFoodItems', {
+    const response = await api.post('/orderFoodItems', {
       userId: currentUser._id,
       tableNumber: myBookedTable.tableNumber,
       items: myFoodListItems,

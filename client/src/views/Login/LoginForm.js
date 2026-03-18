@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../../util/api';
 import swal from 'sweetalert';
 import Modal from 'react-modal';
 
@@ -12,7 +12,7 @@ const LoginForm = (props) => {
   const [password, setPassword] = useState('');
 
   async function loginUser() {
-    const response = await axios.post('/login', {
+    const response = await api.post('/login', {
       email: email,
       password: password,
     });

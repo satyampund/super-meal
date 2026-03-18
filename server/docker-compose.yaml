@@ -1,3 +1,4 @@
+#Just a simple docker-compose file to run the backend server. Make sure to build the Docker image for the backend before running this.
 services:
   app:
     image: satyamdocker26/super-meal-backend # Replace with your actual image name

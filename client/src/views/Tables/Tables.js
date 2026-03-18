@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Tables.css';
-import axios from 'axios';
+import api from '../../util/api';
 import swal from 'sweetalert';
 import AvailableTable from './../../assests/table.png';
 import { loginRequired } from '../../util/loginRequired';
@@ -16,13 +16,13 @@ const Tables = () => {
 
   async function fetchAvailabeTalbles() {
     console.log('fetching all tables');
-    const response = await axios.get('/availableTables');
+    const response = await api.get('/availableTables');
     console.log(response.data.data);
     setAvailabeTable(response.data.data);
   }
 
   async function bookThisTable(e) {
-    const response = await axios.post('/bookTable', {
+    const response = await api.post('/bookTable', {
       tableNumber: e.target.value,
       userId: currentUser._id,
     });

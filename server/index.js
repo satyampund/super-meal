@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import path from 'path';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -12,6 +13,9 @@ import Order from './models/Order.js';
 
 const app = express();
 app.use(express.json());
+app.use(cors({
+  origin: process.env.CORS_ORIGIN || false,
+}));
 
 const PORT = process.env.PORT || 5000;
 
@@ -22,7 +26,7 @@ const PORT = process.env.PORT || 5000;
 mongoose.set('strictQuery', false);
 
 mongoose
-  .connect(process.env.MONGO_NEW, {
+  .connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     // useCreateIndex: true,
     // useFindAndModify: false,
