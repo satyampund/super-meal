@@ -37,6 +37,8 @@ mongoose
 
 // API routes starts here
 
+app.get('/health', (req, res) => res.status(200).send('OK'));
+
 app.post('/signup', async (req, res) => {
   const { name, phone, email, password, role } = req.body;
 
