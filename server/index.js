@@ -32,7 +32,7 @@ mongoose
     // useFindAndModify: false,
   })
   .then(() => {
-    console.log('connected to the database');
+    console.log('Connected to MongoDB Database');
   });
 
 // API routes starts here
